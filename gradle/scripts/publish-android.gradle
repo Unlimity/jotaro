@@ -1,0 +1,67 @@
+apply plugin: 'maven-publish'
+apply plugin: 'digital.wup.android-maven-publish'
+apply plugin: 'org.jetbrains.dokka-android'
+
+dokka {
+    moduleName = art()
+    outputFormat = 'gfm'
+    outputDirectory = "$rootDir/docs/"
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadocJar(type: Jar, dependsOn: dokka) {
+    classifier = 'javadoc'
+    from dokka.outputDirectory + "/${art()}"
+}
+
+group = jotaro.group
+version = jotaro.version
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            artifactId = art()
+
+            pom {
+                name = jotaro.name
+                description = jotaro.desc
+                url = jotaro.url
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                scm {
+                    connection = jotaro.git
+                    developerConnection = jotaro.git
+                    url = jotaro.url
+                }
+            }
+
+            from components.android
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+
+    repositories {
+        maven {
+            def release = "https://api.bintray.com/maven/unlimity/maven/jotaro/;publish=1"
+            def snapshot = "http://oss.jfrog.org/artifactory/oss-snapshot-local/"
+
+            url = jotaro.version.endsWith('SNAPSHOT') ? snapshot : release
+
+            credentials {
+                username System.getenv('MAVEN_USER')
+                password System.getenv('MAVEN_PASSWORD')
+            }
+        }
+    }
+}
