@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".SampleActivity" >
+
+    <EditText
+        android:id="@+id/valueEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Preference value" />
+
+    <RadioGroup
+        android:id="@+id/typeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/typeInt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Integer"/>
+
+        <RadioButton
+            android:id="@+id/typeLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Long" />
+
+        <RadioButton
+            android:id="@+id/typeFloat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Float" />
+
+        <RadioButton
+            android:id="@+id/typeBoolean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boolean" />
+
+        <RadioButton
+            android:id="@+id/typeString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="String" />
+
+        <RadioButton
+            android:id="@+id/typeCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/putButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Put" />
+
+    <Button
+        android:id="@+id/getButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Get" />
+
+    <Button
+        android:id="@+id/getDeferredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Get Deferred" />
+
+
+</LinearLayout>

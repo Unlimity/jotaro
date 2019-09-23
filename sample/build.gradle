@@ -1,14 +1,14 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply from: "$rootDir/gradle/scripts/dependencies.gradle"
-apply from: "$rootDir/gradle/scripts/publish-android.gradle"
 
 android {
     compileSdkVersion versions.compileSdk
 
     defaultConfig {
+        applicationId "com.unlimity.jotaro.sample"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         versionCode versions.jotaroCode
@@ -33,8 +33,10 @@ android {
 dependencies {
     implementation libraries.kotlin
     implementation libraries.coroutineCore
+    implementation libraries.coroutineAndroid
+    implementation libraries.appcompat
+
+    implementation project(":jotaro")
 
     testImplementation libraries.junit
 }
-
-String art() { 'jotaro' }
