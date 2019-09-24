@@ -35,6 +35,8 @@ dependencies {
     implementation libraries.coroutineCore
 
     testImplementation libraries.junit
+    testImplementation libraries.mockito
+    testImplementation libraries.mockitoKotlin
 }
 
 String art() { 'jotaro' }
