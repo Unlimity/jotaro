@@ -1,0 +1,7 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:com.unlimity.jotaro$asDeferred(kotlin.reflect.KMutableProperty0((com.unlimity.jotaro.asDeferred.T)), kotlinx.coroutines.CoroutineScope, com.unlimity.jotaro.asDeferred.T)com.unlimity.jotaro/kotlin.reflect.-k-mutable-property0/as-deferred.md
+$dokka.location:com.unlimity.jotaro$asDeferred(kotlin.reflect.KProperty0((com.unlimity.jotaro.asDeferred.T)), kotlinx.coroutines.CoroutineScope)com.unlimity.jotaro/kotlin.reflect.-k-property0/as-deferred.md
+$dokka.location:com.unlimity.jotaro$asDeferred(kotlinx.coroutines.CoroutineScope, kotlin.reflect.KMutableProperty0((com.unlimity.jotaro.asDeferred.T)), com.unlimity.jotaro.asDeferred.T)com.unlimity.jotaro/kotlinx.coroutines.-coroutine-scope/as-deferred.md
+$dokka.location:com.unlimity.jotaro$asDeferred(kotlinx.coroutines.CoroutineScope, kotlin.reflect.KProperty0((com.unlimity.jotaro.asDeferred.T)))com.unlimity.jotaro/kotlinx.coroutines.-coroutine-scope/as-deferred.md
+com.unlimity.jotaro

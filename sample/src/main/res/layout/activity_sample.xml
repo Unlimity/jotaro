@@ -55,6 +55,12 @@
             android:layout_height="wrap_content"
             android:text="Custom" />
 
+        <RadioButton
+            android:id="@+id/typeCustomGson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom (Gson)" />
+
     </RadioGroup>
 
     <Button
@@ -77,6 +83,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Get Deferred" />
+
+    <Button
+        android:id="@+id/putDeferredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Put Deferred" />
 
 
 </LinearLayout>

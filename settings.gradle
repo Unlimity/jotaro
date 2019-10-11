@@ -1,2 +1,3 @@
 include ':jotaro'
+include ':jotaro-gson'
 include ':sample'

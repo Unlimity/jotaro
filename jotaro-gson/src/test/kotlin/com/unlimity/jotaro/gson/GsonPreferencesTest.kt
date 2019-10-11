@@ -1,9 +1,11 @@
-package com.unlimity.jotaro
+package com.unlimity.jotaro.gson
 
 import android.content.SharedPreferences
+import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.eq
 import com.nhaarman.mockito_kotlin.whenever
+import com.unlimity.jotaro.asDeferred
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -12,7 +14,7 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class PreferencesTest {
+class GsonPreferencesTest {
     @Mock
     lateinit var shared: SharedPreferences
 
@@ -191,19 +193,14 @@ class PreferencesTest {
         assert(storage == 55)
     }
 
-    class TestPreferences(shared: SharedPreferences) : Preferences(shared) {
+    class TestPreferences(shared: SharedPreferences) : GsonPreferences(shared, Gson()) {
         var int by Preference("int", 0)
         var long by Preference("long", 0L)
         var float by Preference("float", .0f)
         var boolean by Preference("boolean", false)
         var string by Preference("string", "")
         var set by Preference("set", setOf<String>())
-        var custom by Preference(
-            "custom",
-            Custom(0, ""),
-            serializer = { "${it.id}|${it.name}" },
-            deserializer = { it.split('|').let { list -> Custom(list[0].toInt(), list[1]) } }
-        )
+        var custom by Preference("custom", Custom(0, ""))
     }
 
     data class Custom(val id: Int, val name: String)

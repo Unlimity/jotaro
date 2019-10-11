@@ -1,20 +1,21 @@
-package com.unlimity.jotaro
+package com.unlimity.jotaro.gson
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-open class Preferences(
-    private val preferences: SharedPreferences
+open class GsonPreferences(
+    private val preferences: SharedPreferences,
+    private val gson: Gson
 ) {
-    constructor(context: Context, name: String) : this(context.getSharedPreferences(name, Context.MODE_PRIVATE))
+    constructor(context: Context, name: String, gson: Gson) : this(context.getSharedPreferences(name, Context.MODE_PRIVATE), gson)
 
     inner class Preference<R, T : Any>(
         private val name: String,
-        private val default: T,
-        private val serializer: (T) -> String = { it.toString() },
-        private val deserializer: (String) -> T = { it as T }
+        private val default: T
     ) : ReadWriteProperty<R, T> {
         override fun getValue(thisRef: R, property: KProperty<*>): T {
             return when(default) {
@@ -26,7 +27,7 @@ open class Preferences(
                 is Set<*> -> preferences.getStringSet(name, default as Set<String>) as T
                 else -> {
                     val string = preferences.getString(name, null)
-                    return string?.let(deserializer) ?: default
+                    return string?.let { gson.fromJson<T>(it, default::class.java) } ?: default
                 }
             }
         }
@@ -41,7 +42,7 @@ open class Preferences(
                 is Boolean -> editor.putBoolean(name, value)
                 is String -> editor.putString(name, value)
                 is Set<*> -> editor.putStringSet(name, value as Set<String>)
-                else -> editor.putString(name, serializer(value))
+                else -> editor.putString(name, gson.toJson(value))
             }
 
             editor.apply()
