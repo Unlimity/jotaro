@@ -88,7 +88,21 @@ class MyPreferences(context: Context) : Preferences(context, "MyPreferences") {
 ```
 
 `serializer` and `deserializer` arguments are being invoked when the type of the preference is not supported
-out of the box. You can write manual serialization, or use any third party libraries, such as `Gson`.
+out of the box. You can write manual serialization, use `jotaro-gson` artifact, or use any third party libraries, such as `Jackson`.
+
+#### Jotaro-Gson
+
+Library provides separate artifact that extends default `jotaro` artifact and provides `GsonPreferences` class with
+embedded serialization/deserialization through `Gson` library. This class has additional constructor argument and
+do not provide custom `serializer` and `deserializer` argument for the preference property delegate:
+
+```kotlin
+data class User(val id: Int, val name: String)
+
+class MyGsonPreferences(gson: Gson, context: Context) : GsonPreferences(gson, context, "MyGsonPreferences") {
+    var user by Preference("user", User(0, ""))
+}
+```
 
 ### Install
 
@@ -97,6 +111,14 @@ Maven
 <dependency>
   <groupId>com.unlimity.jotaro</groupId>
   <artifactId>jotaro</artifactId>
+  <version>LATEST_VERSION</version>
+  <type>pom</type>
+</dependency>
+
+<!-- With embedded Gson !-->
+<dependency>
+  <groupId>com.unlimity.jotaro</groupId>
+  <artifactId>jotaro-gson</artifactId>
   <version>LATEST_VERSION</version>
   <type>pom</type>
 </dependency>
@@ -109,6 +131,9 @@ repositories {
 
 dependencies {
     implementation 'com.unlimity.jotaro:jotaro:LATEST_VERSION'
+    
+    // With embedded Gson
+    implementation 'com.unlimity.jotaro:jotaro-gson:LATEST_VERSION'
 }
 ```
 
