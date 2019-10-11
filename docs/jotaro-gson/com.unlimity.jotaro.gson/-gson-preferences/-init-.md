@@ -2,5 +2,5 @@
 
 # &lt;init&gt;
 
-`GsonPreferences(context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, gson: Gson)`
-`GsonPreferences(preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`, gson: Gson)`
+`GsonPreferences(gson: Gson, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, mode: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = Context.MODE_PRIVATE)`
+`GsonPreferences(gson: Gson, preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`)`

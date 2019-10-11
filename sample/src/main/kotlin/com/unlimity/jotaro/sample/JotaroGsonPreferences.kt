@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.unlimity.jotaro.gson.GsonPreferences
 
-class JotaroGsonPreferences(preferences: SharedPreferences) : GsonPreferences(preferences, Gson()) {
+class JotaroGsonPreferences(preferences: SharedPreferences) : GsonPreferences(Gson(), preferences) {
     var custom: Custom by Preference(
         name = "custom",
         default = Custom(0, "", 160.5f)

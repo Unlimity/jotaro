@@ -14,4 +14,4 @@
 
 | Name | Summary |
 |---|---|
-| [&lt;init&gt;](-init-.md) | `Preferences(context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`)`<br>`Preferences(preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`)` |
+| [&lt;init&gt;](-init-.md) | `Preferences(context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, mode: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = Context.MODE_PRIVATE)`<br>`Preferences(preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`)` |

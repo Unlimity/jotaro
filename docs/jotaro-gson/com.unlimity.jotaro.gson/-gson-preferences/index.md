@@ -14,4 +14,4 @@
 
 | Name | Summary |
 |---|---|
-| [&lt;init&gt;](-init-.md) | `GsonPreferences(context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, gson: Gson)`<br>`GsonPreferences(preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`, gson: Gson)` |
+| [&lt;init&gt;](-init-.md) | `GsonPreferences(gson: Gson, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, mode: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = Context.MODE_PRIVATE)`<br>`GsonPreferences(gson: Gson, preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`)` |
