@@ -37,10 +37,13 @@ android {
 dependencies {
     implementation libraries.kotlin
     implementation libraries.coroutineCore
+    implementation libraries.gson
+
+    api project(':jotaro')
 
     testImplementation libraries.junit
     testImplementation libraries.mockito
     testImplementation libraries.mockitoKotlin
 }
 
-String art() { 'jotaro' }
+String art() { 'jotaro-gson' }

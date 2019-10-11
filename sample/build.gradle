@@ -28,6 +28,10 @@ android {
         test.java.srcDirs += "src/test/kotlin"
         androidTest.java.srcDirs += "src/androidTest/kotlin"
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -35,8 +39,9 @@ dependencies {
     implementation libraries.coroutineCore
     implementation libraries.coroutineAndroid
     implementation libraries.appcompat
+    implementation libraries.gson
 
-    implementation project(":jotaro")
+    implementation project(':jotaro-gson')
 
     testImplementation libraries.junit
 }
