@@ -8,7 +8,8 @@ import kotlin.reflect.KProperty
 open class Preferences(
     private val preferences: SharedPreferences
 ) {
-    constructor(context: Context, name: String) : this(context.getSharedPreferences(name, Context.MODE_PRIVATE))
+    constructor(context: Context, name: String, mode: Int = Context.MODE_PRIVATE)
+            : this(context.getSharedPreferences(name, mode))
 
     inner class Preference<R, T : Any>(
         private val name: String,

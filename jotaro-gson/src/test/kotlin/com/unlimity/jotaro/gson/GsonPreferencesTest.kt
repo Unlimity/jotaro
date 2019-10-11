@@ -193,7 +193,7 @@ class GsonPreferencesTest {
         assert(storage == 55)
     }
 
-    class TestPreferences(shared: SharedPreferences) : GsonPreferences(shared, Gson()) {
+    class TestPreferences(shared: SharedPreferences) : GsonPreferences(Gson(), shared) {
         var int by Preference("int", 0)
         var long by Preference("long", 0L)
         var float by Preference("float", .0f)

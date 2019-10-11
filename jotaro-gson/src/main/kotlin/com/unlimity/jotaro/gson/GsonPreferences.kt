@@ -8,10 +8,11 @@ import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 open class GsonPreferences(
-    private val preferences: SharedPreferences,
-    private val gson: Gson
+    private val gson: Gson,
+    private val preferences: SharedPreferences
 ) {
-    constructor(context: Context, name: String, gson: Gson) : this(context.getSharedPreferences(name, Context.MODE_PRIVATE), gson)
+    constructor(gson: Gson, context: Context, name: String, mode: Int = Context.MODE_PRIVATE)
+            : this(gson, context.getSharedPreferences(name, mode))
 
     inner class Preference<R, T : Any>(
         private val name: String,
