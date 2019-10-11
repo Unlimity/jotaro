@@ -13,8 +13,8 @@ ext.versions = [
         testRunner      : '1.0.2',
         testRules       : '1.0.2',
         kakao           : '1.4.0',
-        jotaro          : '0.0.1',
-        jotaroCode      : 1,
+        jotaro          : '0.1.0',
+        jotaroCode      : 2,
         compileSdk      : 28,
         targetSdk       : 28,
         minSdk          : 16
@@ -50,5 +50,5 @@ ext.jotaro = [
         url             : 'https://github.com/unlimity/jotaro',
         git             : 'https://github.com/unlimity/jotaro.git',
         group           : 'com.unlimity.jotaro',
-        version         : '0.0.1'
+        version         : '0.1.0'
 ]
