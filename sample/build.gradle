@@ -41,6 +41,7 @@ dependencies {
     implementation libraries.appcompat
     implementation libraries.gson
 
+    implementation project(':jotaro')
     implementation project(':jotaro-gson')
 
     testImplementation libraries.junit
