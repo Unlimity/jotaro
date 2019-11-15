@@ -37,6 +37,32 @@ class MyPreferencesImpl(context: Context) : Preferences(context, "MyPreferences"
 }
 ```
 
+#### Apply vs Commit
+
+In some cases, you need to explicitly commit changes to the `SharedPreferences` in a blocking manner.
+By default, `jotaro` saves all the preferences via `SharedPreferences.Editor.apply()` when a preference property is
+being set.
+
+However, there is an option to alternate such behaviour and opt to the blocking `SharedPreferences.Editor.commit()` call.
+To do this, you need to provide `isApplyOnSet` flag value as `false`. This property is located in `Preferences` and `GsonPreferences`
+container classes, as well as `Preference` delegate.
+
+The difference between the two is only the level at which you're opting to `commit()`.
+ - If you set this flag as false on a container class level, then all internal preferences will be committed.
+ - If you set this flag as false on a single preference, only this preference will be committed. 
+ 
+```kotlin
+class MyPreferences(context: Context) : Preferences(context, "MyPreferences", isApplyOnSet = false) { // All preferences will be committed
+    var myInt by Preference("myInt", 0)
+    var myString by Preference("myString", "default")
+}
+
+class MyOtherPreferences(context: Context) : Preferences(context, "MyPreferences") {
+    var myInt by Preference("myInt", 0)
+    var myString by Preference("myString", "default", isApplyOnSet = false) // Only this preference will be committed
+}
+```
+
 #### Coroutines
 
 If you need to acquire your preferences in asynchronous way, library provides 2 extension functions to

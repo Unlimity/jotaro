@@ -2,9 +2,7 @@ package com.unlimity.jotaro.gson
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.eq
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockito_kotlin.*
 import com.unlimity.jotaro.asDeferred
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -193,6 +191,44 @@ class GsonPreferencesTest {
         assert(storage == 55)
     }
 
+
+    @Test
+    fun testCommitOnSinglePreference() {
+        // Arrange
+        val prefs = TestCommitPreferences(shared)
+
+        whenever(shared.edit()).thenReturn(editor)
+
+        // Act
+        prefs.int = 50
+
+        // Assert
+        verify(editor).apply()
+        verify(editor, times(0)).commit()
+
+        // Act
+        prefs.long = 50L
+
+        // Assert
+        verify(editor).commit()
+    }
+
+    @Test
+    fun testCommitOnClassPreference() {
+        // Arrange
+        val prefs = TestCommitAllPreferences(shared)
+
+        whenever(shared.edit()).thenReturn(editor)
+
+        // Act
+        prefs.int = 50
+        prefs.long = 50L
+
+        // Assert
+        verify(editor, times(0)).apply()
+        verify(editor, times(2)).commit()
+    }
+
     class TestPreferences(shared: SharedPreferences) : GsonPreferences(Gson(), shared) {
         var int by Preference("int", 0)
         var long by Preference("long", 0L)
@@ -201,6 +237,17 @@ class GsonPreferencesTest {
         var string by Preference("string", "")
         var set by Preference("set", setOf<String>())
         var custom by Preference("custom", Custom(0, ""))
+    }
+
+
+    class TestCommitPreferences(shared: SharedPreferences) : GsonPreferences(Gson(), shared) {
+        var int by Preference("int", 0, true)
+        var long by Preference("long", 0L, false)
+    }
+
+    class TestCommitAllPreferences(shared: SharedPreferences) : GsonPreferences(Gson(), shared, false) {
+        var int by Preference("int", 0, true)
+        var long by Preference("long", 0L, false)
     }
 
     data class Custom(val id: Int, val name: String)

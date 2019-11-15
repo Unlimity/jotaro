@@ -1,9 +1,7 @@
 package com.unlimity.jotaro
 
 import android.content.SharedPreferences
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.eq
-import com.nhaarman.mockito_kotlin.whenever
+import com.nhaarman.mockito_kotlin.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -191,6 +189,43 @@ class PreferencesTest {
         assert(storage == 55)
     }
 
+    @Test
+    fun testCommitOnSinglePreference() {
+        // Arrange
+        val prefs = TestCommitPreferences(shared)
+
+        whenever(shared.edit()).thenReturn(editor)
+
+        // Act
+        prefs.int = 50
+
+        // Assert
+        verify(editor).apply()
+        verify(editor, times(0)).commit()
+
+        // Act
+        prefs.long = 50L
+
+        // Assert
+        verify(editor).commit()
+    }
+
+    @Test
+    fun testCommitOnClassPreference() {
+        // Arrange
+        val prefs = TestCommitAllPreferences(shared)
+
+        whenever(shared.edit()).thenReturn(editor)
+
+        // Act
+        prefs.int = 50
+        prefs.long = 50L
+
+        // Assert
+        verify(editor, times(0)).apply()
+        verify(editor, times(2)).commit()
+    }
+
     class TestPreferences(shared: SharedPreferences) : Preferences(shared) {
         var int by Preference("int", 0)
         var long by Preference("long", 0L)
@@ -204,6 +239,16 @@ class PreferencesTest {
             serializer = { "${it.id}|${it.name}" },
             deserializer = { it.split('|').let { list -> Custom(list[0].toInt(), list[1]) } }
         )
+    }
+
+    class TestCommitPreferences(shared: SharedPreferences) : Preferences(shared) {
+        var int by Preference("int", 0, true)
+        var long by Preference("long", 0L, false)
+    }
+
+    class TestCommitAllPreferences(shared: SharedPreferences) : Preferences(shared, false) {
+        var int by Preference("int", 0, true)
+        var long by Preference("long", 0L, false)
     }
 
     data class Custom(val id: Int, val name: String)
