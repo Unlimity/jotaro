@@ -1,6 +1,6 @@
 # Jotaro
 [![Bintray version](https://api.bintray.com/packages/alviere/maven/jotaro/images/download.svg)](https://bintray.com/alviere/maven/jotaro)
-[![Kotlin version badge](https://img.shields.io/badge/kotlin-1.3.50-blue.svg)](http://kotlinlang.org/)
+[![Kotlin version badge](https://img.shields.io/badge/kotlin-1.3.72-blue.svg)](http://kotlinlang.org/)
 
 Kotlin way to store and retrieve `SharedPreferences` in Android
 
