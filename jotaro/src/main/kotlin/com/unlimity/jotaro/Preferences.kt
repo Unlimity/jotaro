@@ -8,7 +8,7 @@ import kotlin.reflect.KProperty
 
 @Suppress("UNCHECKED_CAST")
 open class Preferences(
-    private val preferences: SharedPreferences,
+    protected val preferences: SharedPreferences,
     private val isApplyOnSet: Boolean = true
 ) {
     constructor(context: Context, name: String, mode: Int = Context.MODE_PRIVATE, isApplyOnSet: Boolean = true)

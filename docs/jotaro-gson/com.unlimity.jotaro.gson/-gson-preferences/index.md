@@ -15,3 +15,10 @@
 | Name | Summary |
 |---|---|
 | [&lt;init&gt;](-init-.md) | `GsonPreferences(gson: Gson, context: `[`Context`](https://developer.android.com/reference/android/content/Context.html)`, name: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, mode: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = Context.MODE_PRIVATE, isApplyOnSet: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = true)`<br>`GsonPreferences(gson: Gson, preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html)`, isApplyOnSet: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = true)` |
+
+### Properties
+
+| Name | Summary |
+|---|---|
+| [gson](gson.md) | `val gson: Gson` |
+| [preferences](preferences.md) | `val preferences: `[`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences.html) |

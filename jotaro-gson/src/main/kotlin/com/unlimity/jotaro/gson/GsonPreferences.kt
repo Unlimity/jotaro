@@ -9,8 +9,8 @@ import kotlin.reflect.KProperty
 
 @Suppress("UNCHECKED_CAST")
 open class GsonPreferences(
-    private val gson: Gson,
-    private val preferences: SharedPreferences,
+    protected val gson: Gson,
+    protected val preferences: SharedPreferences,
     private val isApplyOnSet: Boolean = true
 ) {
     constructor(gson: Gson, context: Context, name: String, mode: Int = Context.MODE_PRIVATE, isApplyOnSet: Boolean = true)

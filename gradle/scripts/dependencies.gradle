@@ -1,6 +1,6 @@
 ext.versions = [
-        kotlin          : '1.3.50',
-        coroutines      : '1.3.1',
+        kotlin          : '1.3.72',
+        coroutines      : '1.3.3',
         dokka           : '0.9.18',
         android         : '3.3.1',
         androidMaven    : '3.6.2',
@@ -13,8 +13,8 @@ ext.versions = [
         testRunner      : '1.0.2',
         testRules       : '1.0.2',
         kakao           : '1.4.0',
-        jotaro          : '0.2.0',
-        jotaroCode      : 5,
+        jotaro          : '1.0.0',
+        jotaroCode      : 6,
         compileSdk      : 28,
         targetSdk       : 28,
         minSdk          : 16
@@ -50,5 +50,5 @@ ext.jotaro = [
         url             : 'https://github.com/unlimity/jotaro',
         git             : 'https://github.com/unlimity/jotaro.git',
         group           : 'com.unlimity.jotaro',
-        version         : '0.2.0'
+        version         : '1.0.0'
 ]
